@@ -1,11 +1,12 @@
 package com.zery.blog.controller;
 
-import com.zery.blog.pojo.menuPo;
-import com.zery.blog.service.menuService;
+import com.zery.blog.model.Menu;
+import com.zery.blog.service.impl.MenuService;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.View;
 
+import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,17 +15,15 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/home")
-public class homeController {
+public class HomeController {
 
-    menuService service = new  menuService();
+    @Resource
+    private MenuService menuService;
+
     @RequestMapping("/index")
     public String index()
     {
-
-        Collection<menuPo> menus =  service.queryMenu();
+        List<Menu> menus =  menuService.queryMenus();
         return "index" ;
     }
-
-
-
 }
