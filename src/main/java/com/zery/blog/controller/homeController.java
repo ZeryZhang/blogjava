@@ -1,13 +1,12 @@
 package com.zery.blog.controller;
 
 import com.zery.blog.model.Menu;
-import com.zery.blog.service.impl.MenuService;
+import com.zery.blog.service.IMenuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,12 +16,13 @@ import java.util.List;
 @RequestMapping("/home")
 public class HomeController {
 
-    @Resource
-    private MenuService menuService;
+    @Autowired
+    private IMenuService menuService;
 
     @RequestMapping("/index")
     public String index()
     {
+       // IMenuService menuService = new MenuService();
         List<Menu> menus =  menuService.queryMenus();
         return "index" ;
     }
