@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zery.blog.mapper.MenuMapper" >
+
+    <resultMap id="UserBaseMap" type="com.zery.blog.model.Menu">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="MenuName" property="MenuName" jdbcType="VARCHAR"/>
+        <result column="MenuCode" property="MenuCode" jdbcType="VARCHAR"/>
+        <result column="MenuUrl" property="MenuUrl" jdbcType="VARCHAR"/>
+        <result column="IsDelete" property="IsDelete" jdbcType="BIT"/>
+        <result column="Sort" property="Sort" jdbcType="INT"/>
+
+    </resultMap>
+
+    <select id="queryMenus" resultType="com.zery.blog.model.Menu">
+        SELECT * FROM Menu
+
+    </select>
+
+    <select id="getMenuById" resultMap="UserBaseMap">
+        SELECT * FROM Menu
+        WHERE id = #{id}
+        AND IsDelete = #{isDelete}
+    </select>
+
+
+</mapper>

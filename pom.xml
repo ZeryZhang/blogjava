@@ -6,7 +6,8 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>zeryblog Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <!--<url>http://maven.apache.org</url>-->
+  <url>http://10.2.21.55:8081/nexus/content/groups/public/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- spring版本号 -->
