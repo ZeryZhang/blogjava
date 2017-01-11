@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class HomeController {
     {
        // IMenuService menuService = new MenuService();
         List<Menu> menus =  menuService.queryMenus();
-        return "index" ;
+        ModelAndView model = new ModelAndView();
+        model.addObject("menuName",)
+        return "home" ;
     }
 }

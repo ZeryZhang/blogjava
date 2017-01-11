@@ -9,6 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/1/9.
  */
 public interface MenuMapper {
+
     public List<Menu> queryMenus();
 
     public Menu getMenuById(String id);
