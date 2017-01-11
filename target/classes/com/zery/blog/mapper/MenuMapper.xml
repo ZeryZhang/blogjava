@@ -8,7 +8,7 @@
         <result column="MenuCode" property="MenuCode" jdbcType="VARCHAR"/>
         <result column="MenuUrl" property="MenuUrl" jdbcType="VARCHAR"/>
         <result column="IsDelete" property="IsDelete" jdbcType="BIT"/>
-        <result column="Sort" property="Sort" jdbcType="INT"/>
+        <result column="Sort" property="Sort" jdbcType="INTEGER"/>
 
     </resultMap>
 

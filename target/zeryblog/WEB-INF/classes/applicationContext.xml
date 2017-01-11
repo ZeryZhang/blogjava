@@ -14,33 +14,39 @@
   http://www.springframework.org/schema/util
   http://www.springframework.org/schema/util/spring-util-4.0.xsd
   ">
-    <context:property-placeholder location="classpath:jdbc.properties"/>
-    <!--数据源-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="url" value="${mysql.url}" />
-        <property name="driverClassName" value="${mysql.driverClassName}" />
-        <property name="username" value="${mysql.username}" />
-        <!--MySQL密码-->
-        <property name="password" value="${mysql.password}" />
+    <!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
+    <!-- 引入外部数据源配置信息 -->
+
+    <!-- 引入外部数据源配置信息 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <value>classpath:jdbc.properties</value>
+        </property>
     </bean>
 
-
-
+    <!--配置数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/blog"></property>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
 
     <!-- session工厂 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-conf.xml"/>
+        <property name="mapperLocations" value="classpath*:com/zery/blog/mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="com.zery.blog.model"/>
     </bean>
-    <!--&lt;!&ndash; 自动扫描所有的Mapper接口与文件 &ndash;&gt;-->
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="com.zery.blog.mapper"/>-->
-    <!--</bean>-->
-
-    <!-- 扫描器 -->
+    <!-- 自动扫描所有的Mapper接口与文件 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.zery.blog.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
 </beans>

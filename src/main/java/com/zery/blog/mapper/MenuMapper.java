@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/1/9.
  */
-@Repository
 public interface MenuMapper {
     public List<Menu> queryMenus();
 

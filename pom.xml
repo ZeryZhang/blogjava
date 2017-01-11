@@ -114,6 +114,12 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.40</version>
+    </dependency>
+
     <!-- 添加数据库连接池依赖 -->
     <dependency>
       <groupId>commons-dbcp</groupId>
